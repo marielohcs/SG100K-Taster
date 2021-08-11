@@ -11,4 +11,4 @@ We aim to achieve the demonstration of basic functionalities in this sesssion:
 - PCA plot against ethnicity
 - Allele frequencies comparisons for known FH genes
 
-RStudio version used: v1.2
+R version 4.0.3
