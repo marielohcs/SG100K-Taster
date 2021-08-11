@@ -1,4 +1,4 @@
-# SG10K-Taster
+# SG100K-Taster
 R scripts for SG10K Taster Training
 
 The scripts here will be used in the SG10K Taster Training session - RStudio section on 12th and 17th August.
