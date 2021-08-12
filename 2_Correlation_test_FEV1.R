@@ -3,18 +3,10 @@ library(ggplot2)
 library(ggpubr)
 library(grid)
 
-res = fetchData ("select * from ds101075")
+#Fetch data from BC server and read them into a table
+res = fetchData ("select * from ds101080")
 bcos_data <- read.table(res$RESULT, sep="\t", header = TRUE)
 
-# Defining extra variable as string, ext_var1="":
-#ext_var1=""
-
-# Defining extra variable as string, ext_var2="":
-#ext_var2=""
-
-### Automatically created script part ends here
-
-### User script starts here ###
 bcos_data = as.data.frame(bcos_data)
 attach(bcos_data)
 
@@ -29,9 +21,9 @@ ttest_gender <- t.test(DSM8_FEV1_1 ~ FREG7_GENDER2_LABEL)
 
 correlation_age <- cor.test(bcos_data$FREG8_AGE2, bcos_data$DSM8_FEV1_1, method = c("pearson"))$estimate
 
-#Visualize the Regression Graphically
-#png(file = "res_lm.txt")
-# Plot the chart
+pvalue_gender <- signif(dt(ttest_gender$statistic,df=(ttest_gender$parameter)),3)
+
+# Plot the correlation plot and boxplot
 A <- ggplot(bcos_data, mapping = aes(x = DBI13_HEIGHT , y = DSM8_FEV1_1)) + 
   geom_point() +
   labs(x = "DBI13_HEIGHT", y = "DSM8_FEV1_1", title = "DBI13_HEIGHT & DSM8_FEV1_1") +
@@ -57,5 +49,3 @@ D <- ggplot(bcos_data, mapping = aes(x = as.factor(FREG7_GENDER2_LABEL) , y = DS
 
 
 ggarrange(A, B, C, D, ncol = 2, nrow = 2)
-# Save the file.
-#dev.off()
