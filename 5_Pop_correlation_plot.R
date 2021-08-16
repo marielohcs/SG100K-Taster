@@ -37,4 +37,3 @@ ggplot(bcos_data, mapping = aes(x = MAF_EUR , y = MAF_SG)) +
         legend.title = element_text(size = rel(1)), 
         legend.text = element_text(size = rel(1)),
         legend.key.size = unit(1,"line"))
-
